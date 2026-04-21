@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.jaideepdhanoa/vocab-voyage",
   "title": "Vocab Voyage",
-  "description": "Vocabulary tools for SAT, ISEE, SSAT, GRE, GMAT, LSAT, PSAT prep — Word of the Day, definitions, multiple-choice quizzes, course word lists, and 7-day study plan previews. Hosted, no install required. Optional personal tokens with scoped access.",
+  "description": "Vocabulary tools for SAT/ISEE/SSAT/GRE/GMAT/LSAT/PSAT prep. 7 tools + MCP Apps widgets. Hosted, no install.",
   "version": "1.0.0",
   "websiteUrl": "https://vocab.voyage/mcp",
   "keywords": [
