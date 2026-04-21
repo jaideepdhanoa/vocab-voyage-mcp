@@ -11,7 +11,6 @@ The server normalizes refs to lowercase `[a-z0-9_-]{1,32}`. The slugs below are 
 | **modelcontextprotocol/registry** (`mcp-publisher publish`) | `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/mcp-server?ref=mcp_registry` |
 | **Glama** | `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/mcp-server?ref=glama` |
 | **Smithery** | `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/mcp-server?ref=smithery` |
-| **mcpmarket.com** | `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/mcp-server?ref=mcpmarket` |
 | **ClawHub** | `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/mcp-server?ref=clawhub` |
 | **Reddit r/ClaudeAI** | `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/mcp-server?ref=reddit_claudeai` |
 | **Reddit r/ChatGPT** | `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/mcp-server?ref=reddit_chatgpt` |
@@ -22,6 +21,19 @@ The server normalizes refs to lowercase `[a-z0-9_-]{1,32}`. The slugs below are 
 | **X / Twitter** | `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/mcp-server?ref=twitter` |
 | **Hacker News (Show HN)** | `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/mcp-server?ref=hn` |
 | **YouTube demo** | `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/mcp-server?ref=youtube` |
+
+## Live registry listings (Nov 2025)
+
+All four launch directories have approved Vocab Voyage. Use these canonical listing URLs for badges, blog posts, and back-references:
+
+| Directory | Listing URL |
+|---|---|
+| Official MCP Registry | https://registry.modelcontextprotocol.io/?q=vocab-voyage |
+| Glama | https://glama.ai/mcp/servers/jaideepdhanoa/vocab-voyage-mcp |
+| Smithery | https://smithery.ai/servers/vocab-voyage/vocab-voyage-mcp |
+| ClawHub | https://clawhub.ai/jaideepdhanoa/vocab-voyage-mcp |
+
+(mcpmarket: not submitted — drop from canonical slug list unless added later.)
 
 ## Discovery + auxiliary surfaces
 

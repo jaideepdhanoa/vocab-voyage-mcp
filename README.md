@@ -10,6 +10,19 @@ Hosted MCP (Model Context Protocol) server providing vocabulary tools for standa
 
 ---
 
+## Listed on
+
+All four launch directories accepted Vocab Voyage at v1.0:
+
+| Directory | Status | Listing |
+|---|---|---|
+| Official MCP Registry | ✅ Live | https://registry.modelcontextprotocol.io/?q=vocab-voyage |
+| Glama | ✅ Live | https://glama.ai/mcp/servers/jaideepdhanoa/vocab-voyage-mcp |
+| Smithery | ✅ Live | https://smithery.ai/servers/vocab-voyage/vocab-voyage-mcp |
+| ClawHub | ✅ Live | https://clawhub.ai/jaideepdhanoa/vocab-voyage-mcp |
+
+---
+
 ## What's included in 1.0
 
 This is the first public release. It already ships with:
