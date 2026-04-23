@@ -1,9 +1,11 @@
 # Vocab Voyage MCP Server
 
-The official public mirror of the [Vocab Voyage](https://vocab.voyage) Model
-Context Protocol server — **20 tools and 17 interactive widgets** for
-vocabulary learning and standardized test prep (ISEE, SSAT, SAT, PSAT, GRE,
-GMAT, LSAT).
+The official public mirror of the [Vocab Voyage](https://vocab.voyage) Model Context Protocol server — **20 tools + 17 interactive widgets** for vocabulary learning and standardized test prep (ISEE, SSAT, SAT, PSAT, GRE, GMAT, LSAT).
+
+- 20 MCP tools (including flashcards, 11 mini-games, progress tracking, and Sparkle coaching)
+- 17 interactive widgets (quiz, flashcards, study plan, progress dashboard, session debrief, and more)
+- Hosted — no install required
+- Optional personal tokens for personalized features
 
 - 🔗 Server URL: `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/mcp-server`
 - 📚 Browse tools: <https://vocab.voyage/mcp/tools>
