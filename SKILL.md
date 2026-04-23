@@ -1,99 +1,75 @@
-# Vocab Voyage — MCP Skill
+# Vocab Voyage Vocabulary Prep Skill
 
-Vocabulary tutor and standardized test prep tools for **ISEE, SSAT, SAT, PSAT, GRE, GMAT, LSAT** and general academic vocabulary. Hosted MCP server — no install required.
+Use Vocab Voyage when a user needs standardized test vocabulary practice, definitions, quizzes, course word lists, or a study plan for ISEE, SSAT, SAT, PSAT, GRE, GMAT, LSAT, or academic vocabulary.
 
-## When to use
+## Tools and APIs
 
-Invoke Vocab Voyage when a user needs:
-
-- A definition with part of speech, example sentence, synonyms, antonyms
-- A multiple-choice vocabulary quiz scoped to a specific test
-- A list of vocabulary words from a specific test-prep course
-- A 7-day study plan preview
-- An explanation of what a word means inside a specific sentence
-- The Word of the Day (general or test-scoped)
-
-## Endpoints
-
-- **MCP server**: `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/mcp-server`
-- **Public REST API**: `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/vocab-api`
-- **Natural-language `/ask`**: `https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/nlweb-ask` (POST `{"query": "..."}`, supports SSE via `prefer.streaming: true`)
-- **OpenAPI spec**: https://vocab.voyage/openapi.json
-- **Server card**: https://vocab.voyage/.well-known/mcp/server-card.json
-- **Agent card**: https://vocab.voyage/.well-known/agent-card.json
-- **Auth + scopes reference**: https://vocab.voyage/developers/auth
-- **Live demo + docs**: https://vocab.voyage/mcp
-
-## Tools
-
-| Tool | Purpose |
-|---|---|
-| `get_word_of_the_day` | Today's vocab word, optionally scoped to a test family |
-| `get_definition` | Definition, part of speech, example, synonyms/antonyms |
-| `generate_quiz` | Multiple-choice quiz (1–10 questions) for a test family |
-| `get_course_word_list` | Sample words from a specific course |
-| `list_courses` | All 13 test-prep courses with slugs and descriptions |
-| `explain_word_in_context` | Explain a word inside a specific sentence |
-| `study_plan_preview` | 7-day, 5-words-per-day sample plan |
-
-## MCP Apps UI widgets
-
-For agents that support MCP Apps, three tools attach a renderable widget via `_meta.ui.resourceUri`:
-
-| Tool | Widget |
-|---|---|
-| `get_definition` | `ui://vocab-voyage/definition` — definition card with example + synonyms |
-| `generate_quiz` | `ui://vocab-voyage/quiz` — interactive multiple-choice quiz |
-| `study_plan_preview` | `ui://vocab-voyage/study-plan` — 7-day plan grid |
-
-Manifest: https://vocab.voyage/.well-known/mcp/apps.json
-
-## Authentication
-
-Anonymous access works for every public tool — no token required.
-
-For personalized tools (mastery, streaks, profile-aware sessions), pass a personal MCP token:
-
-```
-Authorization: Bearer vv_mcp_…
-```
-
-### Where to get a token
-
-1. Sign in at https://vocab.voyage/auth
-2. Open https://vocab.voyage/mcp
-3. Click **Generate token**, choose scopes, copy the `vv_mcp_…` value (shown once)
-
-Full reference, rotation, and revocation: https://vocab.voyage/developers/auth
-
-### Scopes
-
-| Scope | Grants |
-|---|---|
-| `mcp.read` | Read MCP metadata and public tool results. Required for any MCP usage. |
-| `mcp.tools` | Invoke public MCP tools (definition, quiz, courses, study plan). |
-| `profile.read` | Read connected user's display name, account type, preferred course. |
-| `progress.read` | Read mastery, streaks, and recent sessions for the connected user. |
-
-## Rate limits
-
-- Anonymous: **60 req/min per IP**
-- Authenticated: **600 req/hour per user**
+- OpenAPI: https://vocab.voyage/openapi.json
+- Public API: https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/vocab-api
+- MCP: https://gponcrussdahcdyrlhcr.supabase.co/functions/v1/mcp-server
+- Docs: https://vocab.voyage/developers
 
 ## Example prompts
 
-- Define "aberrant" and give a test-prep example.
+- Define “aberrant” and give a test-prep example.
 - Generate a 5-question SAT vocabulary quiz.
 - List Vocab Voyage courses for ISEE and SSAT.
 - Build a 7-day GRE vocabulary study plan preview.
-- Explain "table" in the sentence: "Let's table this discussion."
 
-## Error format
+## Interactive widgets
 
-All errors are structured JSON:
+Vocab Voyage's MCP server returns 17 interactive widgets alongside JSON. On hosts that support `text/html;profile=mcp-app` resources (Claude Desktop, ChatGPT Apps SDK, OpenClaw), tools render as embedded UI: word-of-the-day card, flashcards deck, quiz, 7-day study plan, personal progress dashboard, 11 mini-games (word_match, spelling_bee, speed_round, synonym_showdown, word_scramble, fill_in_blank, context_clues, word_guess, picture_match, crossword, word_search), and a session debrief from Sparkle. Taps inside widgets persist to the user's account via `record_word_result`, `record_session_complete`, `mark_word_known`, and `award_game_xp`. Browse the full catalog with deep-link "Start in Claude/ChatGPT" buttons at https://vocab.voyage/mcp/tools. Source: https://github.com/jaideepdhanoa/vocab-voyage-mcp.
 
-```json
-{ "error_code": "string", "message": "string", "hint": "string", "retry_after": 0 }
-```
+Tool count: 20 (7 public vocab, 4 widget-aware, 6 persistence, 3 sparkle-brain). Prompt count: 6 (vocab_kickoff, test_prep_quiz, session_debrief, ...).
 
-Common `error_code` values: `unauthorized`, `insufficient_scope`, `token_revoked`, `rate_limited`, `invalid_request`, `not_found`, `server_error`.
+## Tool catalog (auto-generated)
+
+<!-- mcp:tools:start -->
+Tool count: 20.
+
+- `get_word_of_the_day` — Returns today's vocabulary Word of the Day, optionally scoped to a test family.
+- `get_definition` (widget-aware) — Look up the definition, part of speech, example sentence, and synonyms/antonyms for a word.
+- `generate_quiz` (widget-aware) — Generate a multiple-choice vocabulary quiz for a test family (1–10 questions).
+- `get_course_word_list` — Get a sample of vocabulary words from a specific Vocab Voyage course.
+- `list_courses` — Lists all 13 Vocab Voyage courses with their slugs and descriptions.
+- `explain_word_in_context` — Explain what a word means inside a specific sentence.
+- `study_plan_preview` (widget-aware) — Returns a sample 7-day study plan (5 words/day) for a given test family.
+- `get_flashcards` (widget-aware) — Returns a tap-to-flip flashcard deck. Per-card answers persist via record_word_result.
+- `get_my_progress` (widget-aware) — Auth-only personal dashboard: streak, XP, mastery split, next-up words, recent misses.
+- `play_game` — Launches one of 11 vocabulary mini-games (word_match, spelling_bee, speed_round, synonym_showdown, word_scramble, fill_in_blank, context_clues, word_guess, picture_match, crossword, word_search). Per-answer events flow to record_word_result; round XP via award_game_xp.
+- `get_sparkle_guidance` (widget-aware) — Lifecycle-aware coaching: returns a phase-appropriate greeting (16 phases) and a recommended next tool/action. Renders the session-debrief widget when relevant.
+- `set_persona` — Switch agent bias between student, parent, tutor, or explorer.
+- `get_recommended_next_action` — Returns a one-line recommendation for what the user should do next.
+- `list_starter_prompts` — Lists the 6 MCP prompts (vocab_kickoff, test_prep_quiz, session_debrief, …) for hosts that don't surface prompts/list.
+- `record_word_result` — Auth: log a per-card answer (correct or incorrect).
+- `record_session_complete` — Auth: log session totals and award XP.
+- `award_game_xp` — Auth: grant bonus XP from a completed mini-game round.
+- `mark_word_known` — Auth: add a word to the user's queue or mastered list.
+- `mark_word_difficult` — Auth: flag a word as needing more review.
+- `update_adaptive_level` — Auth: adjust the user's adaptive difficulty floor/ceiling.
+<!-- mcp:tools:end -->
+
+## Widget catalog (auto-generated)
+
+<!-- mcp:widgets:start -->
+Widget count: 17.
+
+- `ui://vocab-voyage/word-of-the-day` — Word of the Day (learn, 560x360) via `get_word_of_the_day`
+- `ui://vocab-voyage/flashcards` — Flashcards (learn, 560x460) via `get_flashcards`
+- `ui://vocab-voyage/quiz` — Quiz (learn, 560x520) via `generate_quiz`
+- `ui://vocab-voyage/study-plan` — Study Plan (learn, 600x600) via `study_plan_preview`
+- `ui://vocab-voyage/progress` — My Progress (progress, 600x640) via `get_my_progress`
+- `ui://vocab-voyage/game/word_match` — Game · Word Match (play, 620x640) via `play_game`
+- `ui://vocab-voyage/game/spelling_bee` — Game · Spelling Bee (play, 560x580) via `play_game`
+- `ui://vocab-voyage/game/speed_round` — Game · Speed Round (play, 560x600) via `play_game`
+- `ui://vocab-voyage/game/synonym_showdown` — Game · Synonym Showdown (play, 560x580) via `play_game`
+- `ui://vocab-voyage/game/word_scramble` — Game · Word Scramble (play, 560x580) via `play_game`
+- `ui://vocab-voyage/game/fill_in_blank` — Game · Fill in the Blank (play, 560x600) via `play_game`
+- `ui://vocab-voyage/game/context_clues` — Game · Context Clues (play, 600x620) via `play_game`
+- `ui://vocab-voyage/game/word_guess` — Game · Word Guess (play, 560x600) via `play_game`
+- `ui://vocab-voyage/game/picture_match` — Game · Picture Match (play, 600x620) via `play_game`
+- `ui://vocab-voyage/game/crossword` — Game · Crossword (play, 640x720) via `play_game`
+- `ui://vocab-voyage/game/word_search` — Game · Word Search (play, 640x720) via `play_game`
+- `ui://vocab-voyage/session-debrief` — Session Debrief (coach, 600x640) via `get_sparkle_guidance`
+<!-- mcp:widgets:end -->
+

@@ -1,5 +1,19 @@
 # Submission links — use these exact URLs (with `?ref=` for attribution)
 
+<!-- mcp:listing-status:start -->
+## Live registry listings (auto-generated)
+
+> Auto-generated. Reflects `listings[]` from `server-card.json`.
+
+| Directory | Listing URL |
+|---|---|
+| Official MCP Registry | https://registry.modelcontextprotocol.io/?q=vocab-voyage |
+| Glama | https://glama.ai/mcp/servers/jaideepdhanoa/vocab-voyage-mcp |
+| Smithery | https://smithery.ai/servers/vocab-voyage/vocab-voyage-mcp |
+| ClawHub | https://clawhub.ai/jaideepdhanoa/vocab-voyage-mcp |
+<!-- mcp:listing-status:end -->
+
+
 When listing the Vocab Voyage MCP endpoint in any directory or community post, use the variant that includes the `?ref=<channel>` query param. The MCP server records this on every tool call into `mcp_tool_calls.install_source`, so you can see which channel actually drives usage.
 
 The server normalizes refs to lowercase `[a-z0-9_-]{1,32}`. The slugs below are the canonical ones — match these exactly so the Friday analytics query buckets cleanly.
